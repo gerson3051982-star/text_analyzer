@@ -59,7 +59,7 @@ def count_numbers(text):
 
 def count_special_characters(text):
     """Función que cuenta los caracteres especiales de un texto"""
-    special_characters = "!@#$%^&*()_+=-`~[]{}|\;:'",.<>/?"
+    special_characters = "!@#$%^&*()_+-`~[]{}|;:'"
     count = 0
     for char in text:
         if char in special_characters:
