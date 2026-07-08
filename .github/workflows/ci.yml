@@ -1,0 +1,30 @@
+name: CI pipeline
+on:
+    push:
+        branches: [ "master" ]
+    pull_request:
+        branches: [ "master" ]
+
+permissions:
+    contents: read
+    packages: write
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+            - name: Setup Python 
+              uses: actions/setup-python@v4
+              with:
+                python-version: 3.13.7
+            - name: Install dependencies
+              run: pip install -r requirements-dev.txt
+            - name: Check linting with Ruff
+              run: ruff check .
+            - name: Run tests
+              run: pytest tests/
+              
+            
+    
